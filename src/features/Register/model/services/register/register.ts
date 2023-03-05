@@ -26,8 +26,6 @@ export const register = createAsyncThunk<User, RegisterProps, { rejectValue: str
 
             return response.data;
         } catch (e) {
-            // eslint-disable-next-line no-console
-            console.log(e);
             return thunkAPI.rejectWithValue('error');
         }
     },

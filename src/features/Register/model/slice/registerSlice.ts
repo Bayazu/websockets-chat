@@ -25,7 +25,7 @@ export const registerSlice = createSlice({
                 state.error = undefined;
                 state.isLoading = true;
             })
-            .addCase(register.fulfilled, (state, action) => {
+            .addCase(register.fulfilled, (state) => {
                 state.isLoading = false;
             })
             .addCase(register.rejected, (state, action) => {

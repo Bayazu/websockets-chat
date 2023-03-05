@@ -8,14 +8,10 @@ interface LoginPageProps {
     className?: string,
 }
 
-const LoginPage: FC<LoginPageProps> = ({ className }) => {
-    const { t } = useTranslation();
-
-    return (
-        <div className={classNames(cls.LoginPage, {}, [className])}>
-            <LoginForm />
-        </div>
-    );
-};
+const LoginPage: FC<LoginPageProps> = ({ className }) => (
+    <div className={classNames(cls.LoginPage, {}, [className])}>
+        <LoginForm />
+    </div>
+);
 
 export default LoginPage;

@@ -12,7 +12,7 @@ export const userSlice = createSlice({
             state.authData = action.payload;
             // state.authData.isAuth = true;
         },
-        initAuthData: (state) => {
+        initAuthData: () => {
             const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
             if (user) {
                 // TODO запрос на авторизацию
