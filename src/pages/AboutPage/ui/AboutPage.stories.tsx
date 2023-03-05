@@ -11,7 +11,7 @@ export default {
         backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof AboutPage>;
-// 13232
+
 const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage />;
 
 export const Normal = Template.bind({});

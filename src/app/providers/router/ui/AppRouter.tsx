@@ -5,8 +5,6 @@ import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 
 const AppRouter = () => (
     <Routes>
-        {/* <Route path={'/about'} element={<AboutPage/>}/> */}
-        {/* <Route path={'/'} element={<MainPage/>}/> */}
         {Object.values(routeConfig).map(({ path, element }) => (
             <Route
                 key={path}

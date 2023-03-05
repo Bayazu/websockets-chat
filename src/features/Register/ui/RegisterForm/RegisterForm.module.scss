@@ -1,0 +1,19 @@
+.RegisterForm {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.input {
+    margin-top: 10px;
+}
+
+.registerBtn {
+    margin-top: 15px;
+    margin-left: auto;
+}
+
+.buttonWrapper {
+    display: flex;
+    align-items: center;
+}
