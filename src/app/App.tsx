@@ -1,4 +1,4 @@
-import React, { Suspense, useLayoutEffect } from 'react';
+import React, { Suspense, useEffect, useLayoutEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { protectedRoutePath } from 'shared/config/routeConfig/protectedRouteConfig';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import ProtectedRouter from './providers/router/ui/ProtectedRouter';
 
 function App() {
@@ -20,7 +21,13 @@ function App() {
 
     useLayoutEffect(() => {
         if (!isUserAuth && !isAllowPath) {
-            navigate('/login');
+            navigate(protectedRoutePath.login);
+        }
+    }, [isAllowPath, isUserAuth, navigate]);
+
+    useEffect(() => {
+        if (isUserAuth && isAllowPath) {
+            navigate(RoutePath.main);
         }
     }, [isAllowPath, isUserAuth, navigate]);
 
