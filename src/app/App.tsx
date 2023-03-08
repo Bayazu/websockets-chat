@@ -4,15 +4,18 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { protectedRoutePath } from 'shared/config/routeConfig/protectedRouteConfig';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { getChannels } from 'entities/Channels/model/services/getChannels/getChannels';
+import { initWebSocketConnection } from 'processes/model/webSockets/services/initWebSocketConnection';
 import ProtectedRouter from './providers/router/ui/ProtectedRouter';
 
 function App() {
-    const isUserAuth = useSelector(getUserAuthData);
+    const dispatch = useDispatch();
+    const user = useSelector(getUserAuthData);
     const { theme } = useTheme();
     const location = useLocation();
     const navigate = useNavigate();
@@ -20,18 +23,25 @@ function App() {
         || location.pathname !== protectedRoutePath.register;
 
     useLayoutEffect(() => {
-        if (!isUserAuth && !isAllowPath) {
+        if (!user && !isAllowPath) {
             navigate(protectedRoutePath.login);
         }
-    }, [isAllowPath, isUserAuth, navigate]);
+    }, [isAllowPath, user, navigate]);
 
     useEffect(() => {
-        if (isUserAuth && isAllowPath) {
+        if (user && isAllowPath) {
+            dispatch(getChannels({}));
             navigate(RoutePath.main);
         }
-    }, [isAllowPath, isUserAuth, navigate]);
+    }, [isAllowPath, user, navigate, dispatch]);
 
-    if (!isUserAuth) {
+    useEffect(() => {
+        if (user) {
+            dispatch(initWebSocketConnection(user));
+        }
+    }, [dispatch, user]);
+
+    if (!user) {
         return (
             <div className={classNames('app', {}, [theme])}>
                 <Suspense fallback="">
