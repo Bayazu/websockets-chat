@@ -19,5 +19,10 @@
   "Введите пароль": "Enter password",
   "Форма авторизации": "Auth form",
   "Вы ввели неверный логин или пароль": "Uncorrect username or password",
-  "Выйти": "Выйти"
+  "Выйти": "Выйти",
+  "Короткая запись" : "En",
+  "Ещё нет аккаунта?" : "Don't have an account yet?",
+  "Форма регистрации" : "Registration form",
+  "Уже есть аккаунт?" : "Already have an account?",
+  "Зарегистрироваться" : "Register"
 }

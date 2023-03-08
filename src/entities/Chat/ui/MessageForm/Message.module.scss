@@ -1,0 +1,26 @@
+.Message {
+    display: flex;
+    padding: 10px;
+    color: #04ff04;
+}
+
+.textWrapper {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 600px;
+    background: var(--inverted-bg-color);
+    padding: 10px;
+    word-break: break-all;
+}
+
+.isMe {
+    flex-direction: row-reverse;
+
+    .textWrapper {
+        margin-right: 10px;
+    }
+}

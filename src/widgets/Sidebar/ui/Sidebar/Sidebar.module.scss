@@ -1,9 +1,15 @@
 .Sidebar {
+    display: flex;
     height: calc(100vh - var(--navbar-height));
     width: var(--side-bar-width);
     background: var(--inverted-bg-color);
-    position: relative;
-    transition: width 0.3s;
+    transition: width 0.5s;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #000;
+    border-left: none;
+    position: sticky;
+    top: 0;
 }
 
 .switchers {
@@ -19,14 +25,14 @@
 }
 
 .collapseBtn {
+    z-index: 1;
     position: absolute;
-    right: -32px;
-    bottom: 40px;
+    right: 24px;
+    bottom: 97px;
 }
 
 .items {
     margin-top: 20px;
-    margin-left: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -56,11 +62,5 @@
 
     .lang {
         margin-left: 0;
-    }
-
-    .link {
-        opacity: 0;
-        transition: 0.2s opacity;
-        width: 0;
     }
 }

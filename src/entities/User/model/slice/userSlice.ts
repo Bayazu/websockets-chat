@@ -1,8 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { USER_ID, USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { UserSchema, User } from '../types/user';
 
-const initialState: UserSchema = {};
+const initialState: UserSchema = {
+    // authData: {
+    //     id: 5,
+    //     // eslint-disable-next-line max-len
+    //     token: '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImJheWF6dSIsInVzZXJJZCI6NSwiaWF0IjoxNjc4MzAxMDU0LCJleHAiOjE2NzgzODc0NTR9.pYBWtS0lQLDk2C3lRRz4KRZkgWv52viVWyCo3HyHhRI"',
+    //     login: 'bayazu',
+    //     roles: ['user'],
+    // },
+};
 
 export const userSlice = createSlice({
     name: 'user',
@@ -22,6 +30,7 @@ export const userSlice = createSlice({
         logout: (state) => {
             state.authData = undefined;
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+            localStorage.removeItem(USER_ID);
         },
     },
 });

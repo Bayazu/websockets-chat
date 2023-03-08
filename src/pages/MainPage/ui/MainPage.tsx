@@ -1,13 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import { Chat } from 'entities/Chat/ui/ChatForm/Chat';
 
-const MainPage = () => {
-    const { t } = useTranslation('main');
-
-    return (
-        <div>
-            {t('Главная страница')}
-        </div>
-    );
-};
+const MainPage = () => (
+    <Chat />
+);
 
 export default MainPage;
