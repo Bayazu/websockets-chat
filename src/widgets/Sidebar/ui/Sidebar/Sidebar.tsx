@@ -14,7 +14,6 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
-    const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
     const { channels } = useSelector(getChannelsState);
 
@@ -39,7 +38,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
             </Button>
 
             <div className={cls.items}>
-                {channels.map((room, index) => (<Channel key={room.id} collapsed={collapsed} room={room} />))}
+                {channels.map((room) => (<Channel key={room.id} collapsed={collapsed} room={room} />))}
             </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher />

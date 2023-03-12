@@ -1,6 +1,5 @@
 import { Modal } from 'shared/ui/Modal/Modal';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { CreateRoomForm } from 'features/RoomActions/ui/CreateRoomForm/CreateRoomForm';
 import { ConnectRoomForm } from 'features/RoomActions/ui/ConnectRoomForm/ConnectRoomForm';
 
 interface ConnectRoomModalProps {

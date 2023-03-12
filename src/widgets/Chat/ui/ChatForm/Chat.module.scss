@@ -19,7 +19,7 @@
     width: 100%;
     overflow: auto;
     padding: 20px;
-    height: calc(100vh - var(--navbar-height) - 75px)
+    height: calc(100vh - var(--navbar-height) - 75px);
 }
 
 .textAreaWrapper {
@@ -38,11 +38,11 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(229, 229, 229, 0.25);
+    background: rgb(229 229 229 / 25%);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.58);
+    background: rgb(255 255 255 / 58%);
 }
 
 ::-webkit-scrollbar-thumb:hover {

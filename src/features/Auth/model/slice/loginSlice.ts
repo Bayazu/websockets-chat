@@ -40,7 +40,7 @@ export const loginSlice = createSlice({
             .addCase(whoami.fulfilled, (state) => {
                 state.isLoading = false;
             })
-            .addCase(whoami.rejected, (state, action) => {
+            .addCase(whoami.rejected, (state) => {
                 state.isLoading = false;
                 state.error = 'Ошибка';
             });

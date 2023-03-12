@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { LoginForm } from 'features/Auth';
-import { useTranslation } from 'react-i18next';
 import cls from './LoginPage.module.scss';
 
 interface LoginPageProps {

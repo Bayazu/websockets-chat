@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { backendURL } from 'shared/const/backendURL';
 
-const token = localStorage.getItem('user');
-
 export const instance = axios.create({
     baseURL: `${backendURL}`,
     withCredentials: true,
@@ -32,6 +30,7 @@ instance.interceptors.response.use((config) => config, async (error) => {
             localStorage.setItem('user', response.data.token);
             return instance.request(originalRequest);
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log('Не авторизован');
         }
     }

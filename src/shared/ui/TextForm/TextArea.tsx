@@ -22,7 +22,6 @@ export const TextArea = memo((props: InputProps) => {
         onChange,
         placeholder,
         autofocus,
-        ...otherProps
     } = props;
     const ref = useRef<HTMLTextAreaElement>(null);
     const [isFocused, setIsFocused] = useState(false);
@@ -51,11 +50,6 @@ export const TextArea = memo((props: InputProps) => {
         setCaretPosition(e.target.selectionStart);
     };
 
-    // todo поправить каррет
-    // 1. получать текущую длинну текста из carretPosition
-    // 2. если больше чем cols(160), то добавлять новую row
-    // 3. при добавлении row добавлять top в класс карет
-
     return (
         <div className={classNames(cls.TextArea, {}, [className])}>
             <div className={cls.caretWrapper}>
@@ -68,16 +62,16 @@ export const TextArea = memo((props: InputProps) => {
                     onFocus={onFocus}
                     onSelect={onSelect}
                     onChange={onChangeHandler}
-                    placeholder="Напишите сообщение..."
+                    placeholder={placeholder}
                     value={value}
                 />
 
-                {isFocused && (
-                    <span
-                        className={cls.caret}
-                        style={{ left: `${caretPosition * 8.8}px` }}
-                    />
-                )}
+                {/* {isFocused && ( */}
+                {/*    <span */}
+                {/*        className={cls.caret} */}
+                {/*        style={{ left: `${caretPosition * 8.8}px` }} */}
+                {/*    /> */}
+                {/* )} */}
             </div>
         </div>
     );

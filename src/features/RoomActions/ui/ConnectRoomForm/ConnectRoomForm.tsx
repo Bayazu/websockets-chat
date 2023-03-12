@@ -2,14 +2,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
-import React, { memo, useCallback, useState } from 'react';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { getRoomState } from 'features/RoomActions/model/selectors/getRoomState/getRoomState';
-import { roomActions } from 'features/RoomActions/model/slice/RoomActionsSlice';
-import { createRoom } from 'features/RoomActions/model/services/createRoom/createRoom';
-import { uploadImage } from 'features/RoomActions/model/services/uploadImage/uploadImage';
-import { Image, ImageSize } from 'shared/ui/Image/Image';
+import { useDispatch } from 'react-redux';
+import React, { memo, useState } from 'react';
+import { Text } from 'shared/ui/Text/Text';
 import { webSocketsActions } from 'processes/model/webSockets';
 import cls from './ConnectRoomForm.module.scss';
 
@@ -44,8 +39,6 @@ export const ConnectRoomForm = memo(({ className }: ConnectRoomFormProps) => {
     const onChange = (e : any) => {
         setRoomValue(e);
     };
-
-    console.log(roomValue);
 
     const onSubmit = () => {
         dispatch(webSocketsActions.joinToNewRoom(roomValue));

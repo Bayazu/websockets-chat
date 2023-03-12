@@ -1,5 +1,5 @@
 import React, {
-    memo,
+    memo, useCallback,
     useEffect,
     useMemo,
     useRef,
@@ -59,6 +59,10 @@ export const Chat = memo((props: ChatProps) => {
         setState('');
     };
 
+    const onChangeTextAreaMessage = useCallback((value: string) => {
+        setState(value);
+    }, []);
+
     useEffect(() => {
         scrollToBottom();
     }, [state, messages]);
@@ -75,7 +79,7 @@ export const Chat = memo((props: ChatProps) => {
                         <TextArea
                             placeholder={!state && 'Написать сообщение...'}
                             value={state}
-                            onChange={setState}
+                            onChange={onChangeTextAreaMessage}
                         />
                     </div>
                     <Button onClick={sendMessage} theme={ButtonTheme.OUTLINE}>

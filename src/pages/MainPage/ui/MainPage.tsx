@@ -15,10 +15,6 @@ const MainPage = () => {
     const { channels } = useSelector(getChannelsState);
     const currentRoom = useMemo(() => channels.find((room) => room.id === roomId), [channels, roomId]);
 
-    console.log(channels);
-    console.log(currentRoom);
-    console.log(params);
-
     return (
         <div className={cls.MainPage}>
             {channels.length === 0 || !currentRoom

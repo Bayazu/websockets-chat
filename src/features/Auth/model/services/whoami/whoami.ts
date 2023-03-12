@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { User, userActions } from 'entities/User';
-import { USER_ID, USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { authAPI } from 'features/Auth/api/authAPI';
 
 export const whoami = createAsyncThunk<Omit<User, 'token'>, null, { rejectValue: string }>(
@@ -11,9 +9,6 @@ export const whoami = createAsyncThunk<Omit<User, 'token'>, null, { rejectValue:
             // const response = await axios.get<User>('http://26.104.131.172:3010/whoami');
 
             const response = await authAPI.whoami();
-
-            console.log('dkopasokpdaskopdapokopk');
-            console.log(response);
 
             // localStorage.setItem(USER_LOCALSTORAGE_KEY, response.data.token);
             // // TODO удалить из локал стораге userID + из конфига аксиоса

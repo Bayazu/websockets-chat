@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Room } from 'entities/Channels';
 import { Image, ImageSize } from 'shared/ui/Image/Image';
 import cls from './Channel.module.scss';
 
