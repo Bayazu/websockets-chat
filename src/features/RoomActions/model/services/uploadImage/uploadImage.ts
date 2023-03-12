@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Image, roomActions } from 'features/RoomActions';
+import { backendURL } from 'shared/const/backendURL';
 
 interface uploadImageProps {
     image : Blob;
@@ -31,22 +32,22 @@ export const uploadImage = createAsyncThunk<Image, uploadImageProps, { rejectVal
     async ({ image }, thunkAPI) => {
         try {
             // eslint-disable-next-line max-len
-            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImJheWF6dSIsInVzZXJJZCI6NSwiaWF0IjoxNjc4MTMzNzcwLCJleHAiOjE2NzgyMjAxNzB9.yFZQpvN1qOh55nDnP5VFts7O4XeNvT736CbB1PxPIZI';
             const formData = new FormData();
 
             formData.append('image', image);
             formData.append('type', 'room_avatar');
 
+            const token = localStorage.getItem('user');
+
             // const response = await axios.post<Image>('http://26.104.131.172:3010/image', formData);
 
             const response = await axios({
                 method: 'post',
-                url: 'http://26.104.131.172:3010/image',
+                url: `${backendURL}/image`,
                 data: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,
-                    'x-user-id': 5,
                 },
             });
 

@@ -1,8 +1,8 @@
 export interface User {
-    id: number;
+    userId: number;
     login: string;
     token: string;
-    roles: string[];
+    // roles: string[];
 }
 
 export interface UserSchema {

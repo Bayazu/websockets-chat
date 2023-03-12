@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { backendURL } from 'shared/const/backendURL';
 
 interface RegisterProps {
     username: string;
@@ -12,7 +13,7 @@ export const register = createAsyncThunk<User, RegisterProps, { rejectValue: str
     'login/register',
     async (registerData, thunkAPI) => {
         try {
-            const response = await axios.post<User>('http://26.104.131.172:3010/auth/register', {
+            const response = await axios.post<User>(`${backendURL}/auth/register`, {
                 login: registerData.username,
                 password: registerData.password,
             });

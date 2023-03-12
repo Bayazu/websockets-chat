@@ -1,0 +1,50 @@
+.ConnectRoomForm {
+    display: flex;
+    flex-direction: row;
+    width: 580px;
+}
+
+.input {
+    margin-top: 10px;
+}
+
+.createBtn {
+    margin-top: 15px;
+    margin-left: auto;
+}
+
+.buttonWrapper {
+    display: flex;
+    align-items: baseline;
+}
+
+.upload {
+    margin-top: 30px;
+
+    input {
+        display: none;
+    }
+
+    label {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roomCreateBlock {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -20,11 +20,14 @@ export const userSlice = createSlice({
             state.authData = action.payload;
             // state.authData.isAuth = true;
         },
-        initAuthData: () => {
-            const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-            if (user) {
-                // TODO запрос на авторизацию
-                // state.authData = JSON.parse(user);
+        initAuthData: (state, action: PayloadAction<Omit<User, 'token'>>) => {
+            const token = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+            if (token) {
+                state.authData = {
+                    userId: action.payload.userId,
+                    login: action.payload.login,
+                    token,
+                };
             }
         },
         logout: (state) => {
