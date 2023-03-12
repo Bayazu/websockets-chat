@@ -1,5 +1,9 @@
 import React, {
-    memo, useCallback, useEffect, useMemo, useRef, useState,
+    memo,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { User } from 'entities/User';
@@ -15,11 +19,11 @@ import cls from './Chat.module.scss';
 
 interface ChatProps {
     className?: string,
-    room : Room,
-    currentUser : User,
-    messages : IMessage[]
+    room: Room,
+    currentUser: User,
+    messages: IMessage[]
 }
-export const Chat = memo((props : ChatProps) => {
+export const Chat = memo((props: ChatProps) => {
     const {
         room, currentUser, messages, className,
     } = props;
@@ -41,11 +45,6 @@ export const Chat = memo((props : ChatProps) => {
         }
         return 'Сообщений нет';
     }, [messages, currentUser.login]);
-
-    const onChangeTextAreaMessage = useCallback((value: string) => {
-        setState(value);
-        // setState('');
-    }, []);
 
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
@@ -75,7 +74,8 @@ export const Chat = memo((props : ChatProps) => {
                     <div className={cls.textAreaWrapper}>
                         <TextArea
                             placeholder={!state && 'Написать сообщение...'}
-                            onChange={onChangeTextAreaMessage}
+                            value={state}
+                            onChange={setState}
                         />
                     </div>
                     <Button onClick={sendMessage} theme={ButtonTheme.OUTLINE}>
@@ -83,11 +83,7 @@ export const Chat = memo((props : ChatProps) => {
                     </Button>
                 </div>
             </div>
-            <div className={cls.rightPart}>
-                {/* <Sidebar /> */}
-                тут будет сайтбар
-            </div>
+            <div className={cls.rightPart} />
         </div>
-
     );
 });

@@ -4,10 +4,7 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'airbnb',
-    ],
+    extends: ['plugin:react/recommended', 'airbnb'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -38,7 +35,10 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'max-len': ['error', { code: 120, ignoreComments: true }],
+        'max-len': ['error', {
+            code: 120,
+            ignoreComments: true,
+        }],
         'no-restricted-globals': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
@@ -59,5 +59,4 @@ module.exports = {
             },
         },
     ],
-
 };
