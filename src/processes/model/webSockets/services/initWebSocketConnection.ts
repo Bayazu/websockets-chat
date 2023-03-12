@@ -33,14 +33,20 @@ export const initWebSocketConnection = createAsyncThunk<null, User, { rejectValu
 
             let interval : ReturnType<typeof setInterval>;
 
+            let count = 0;
+
             socket.on('disconnect', () => {
-                interval = setInterval(() => {
-                    socket.emit('connection', { userId: user.userId });
-                }, 3000);
+                if (count < 5) {
+                    interval = setInterval(() => {
+                        socket.emit('connection', { userId: user.userId });
+                    }, 3000);
+                    count++;
+                }
             });
 
             socket.on('connection:ok', () => {
                 clearInterval(interval);
+                count = 0;
             });
 
             socket.on('reconnect:try', () => {

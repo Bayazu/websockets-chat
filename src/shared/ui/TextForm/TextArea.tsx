@@ -4,6 +4,7 @@ import React, {
     TextareaHTMLAttributes,
     memo, useEffect, useRef, useState,
 } from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
 import cls from './TextArea.module.scss';
 
 type HTMLInputProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange'>
@@ -36,7 +37,6 @@ export const TextArea = memo((props: InputProps) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length);
     };
 
     const onBlur = () => {
@@ -48,7 +48,7 @@ export const TextArea = memo((props: InputProps) => {
     };
 
     const onSelect = (e: any) => {
-        setCaretPosition(e?.target?.selectionStart || 0);
+        setCaretPosition(e.target.selectionStart);
     };
 
     // todo поправить каррет
@@ -58,29 +58,24 @@ export const TextArea = memo((props: InputProps) => {
 
     return (
         <div className={classNames(cls.TextArea, {}, [className])}>
-            {placeholder && (
-                <div className={cls.placeholder}>
-                    {`${placeholder}>`}
-                </div>
-            )}
             <div className={cls.caretWrapper}>
-                <textarea
-                    rows={2}
-                    cols={160}
+                <TextareaAutosize
                     ref={ref}
-                    value={value}
-                    onChange={onChangeHandler}
                     className={cls.input}
-                    onFocus={onFocus}
+                    minRows={1}
+                    cols={150}
                     onBlur={onBlur}
+                    onFocus={onFocus}
                     onSelect={onSelect}
-                    {...otherProps}
+                    onChange={onChangeHandler}
+                    placeholder="Напишите сообщение..."
+                    value={value}
                 />
 
                 {isFocused && (
                     <span
                         className={cls.caret}
-                        style={{ left: `${caretPosition * 9}px` }}
+                        style={{ left: `${caretPosition * 8.8}px` }}
                     />
                 )}
             </div>
