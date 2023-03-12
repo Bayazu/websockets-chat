@@ -1,0 +1,34 @@
+.ChatWrapper {
+    display: flex;
+    width: 100%;
+}
+
+.rightPart {
+    display: flex;
+}
+
+.leftPart {
+    display: block;
+    width: 100%;
+}
+
+.Chat {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    width: 100%;
+    height: 800px;
+    overflow: auto;
+    padding: 20px;
+}
+
+.textAreaWrapper {
+    min-width: 300px;
+    width: 0;
+}
+
+.messageForm {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}

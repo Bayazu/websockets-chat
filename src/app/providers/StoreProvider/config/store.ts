@@ -1,6 +1,6 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
-import { loginReducer } from 'features/AuthByUsername';
+import { loginReducer } from 'features/Auth';
 import { registerReducer } from 'features/Register';
 import { channelsReducer } from 'entities/Channels';
 import { roomActionsReducer } from 'features/RoomActions';

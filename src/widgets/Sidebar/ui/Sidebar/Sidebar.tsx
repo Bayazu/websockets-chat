@@ -15,8 +15,8 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
     const { t } = useTranslation();
-    const { channels, isLoading } = useSelector(getChannelsState);
     const [collapsed, setCollapsed] = useState(false);
+    const { channels } = useSelector(getChannelsState);
 
     const onToggle = () => {
         setCollapsed((prev) => !prev);
@@ -39,7 +39,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
             </Button>
 
             <div className={cls.items}>
-                {channels.map((room, index) => (<Channel key={room.customId} collapsed={collapsed} room={room} />))}
+                {channels.map((room, index) => (<Channel key={room.id} collapsed={collapsed} room={room} />))}
             </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher />

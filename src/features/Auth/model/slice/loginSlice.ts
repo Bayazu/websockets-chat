@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LoginSchema } from '../types/loginSchema';
+import { whoami } from 'features/Auth/model/services/whoami/whoami';
+import { LoginSchema } from 'features/Auth';
 import { loginByUsername } from '../services/loginByUsername/loginByUsername';
 
 const initialState: LoginSchema = {
@@ -31,6 +32,17 @@ export const loginSlice = createSlice({
             .addCase(loginByUsername.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+            })
+            .addCase(whoami.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(whoami.fulfilled, (state) => {
+                state.isLoading = false;
+            })
+            .addCase(whoami.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = 'Ошибка';
             });
     },
 });

@@ -1,5 +1,5 @@
 import { UserSchema } from 'entities/User';
-import { LoginSchema } from 'features/AuthByUsername';
+import { LoginSchema } from 'features/Auth';
 import { RegisterSchema } from 'features/Register';
 import { ChannelsSchema } from 'entities/Channels';
 import { newRoomSchema } from 'features/RoomActions';

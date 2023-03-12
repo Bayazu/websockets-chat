@@ -6,16 +6,17 @@ import cls from './Message.module.scss';
 interface MessageProps {
     className?: string,
     text: string,
-    userId: number,
-    userIdFromMessage : number,
+
+    userLogin : string,
+    userLoginFromMessage : string
 }
 
 export const Message: FC<MessageProps> = (props) => {
     const {
-        className, text, userId, userIdFromMessage,
+        className, text, userLoginFromMessage, userLogin,
     } = props;
 
-    const isMe = userId === userIdFromMessage;
+    const isMe = userLogin === userLoginFromMessage;
 
     const mods : Record<string, boolean> = {
         [cls.isMe]: isMe,

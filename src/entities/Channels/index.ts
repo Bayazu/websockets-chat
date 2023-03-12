@@ -5,5 +5,5 @@ export {
 export {
     ChannelsSchema,
     Room,
-    Message,
+    IMessage,
 } from './model/types/channels';

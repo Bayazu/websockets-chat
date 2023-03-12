@@ -19,6 +19,9 @@ export const webSocketsSlice = createSlice({
         sendNewMessage: (state, action : PayloadAction<SendMessage>) => {
             state.webSocket.emit('message', action.payload);
         },
+        joinToNewRoom: (state, action: PayloadAction<string>) => {
+            state.webSocket.emit('room:join', { customId: action.payload });
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -34,6 +37,5 @@ export const webSocketsSlice = createSlice({
     },
 });
 
-// Action creators are generated for each case reducer function
 export const { actions: webSocketsActions } = webSocketsSlice;
 export const { reducer: webSocketsReducer } = webSocketsSlice;

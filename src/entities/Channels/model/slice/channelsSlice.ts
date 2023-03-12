@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getChannels } from 'entities/Channels/model/services/getChannels/getChannels';
-import { ChannelsSchema, Message, Room } from '../types/channels';
+import { ChannelsSchema, IMessage, Room } from '../types/channels';
 
 const initialState: ChannelsSchema = {
     isLoading: false,
@@ -17,7 +17,7 @@ export const channelsSlice = createSlice({
         addOneRoomToChannels: (state, action: PayloadAction<Room>) => {
             state.channels.push(action.payload);
         },
-        addMessageToChannel: (state, action: PayloadAction<Message>) => {
+        addMessageToChannel: (state, action: PayloadAction<IMessage>) => {
             const foundedRoom = state.channels.find((room) => room.id === action.payload.roomId);
             if (foundedRoom) {
                 foundedRoom.messages.push(action.payload);

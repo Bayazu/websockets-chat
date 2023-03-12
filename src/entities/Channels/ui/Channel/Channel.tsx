@@ -9,15 +9,15 @@ import cls from './Channel.module.scss';
 interface ChannelProps {
     className?: string,
     collapsed?: boolean
-
-    room : Room
+    // room : Room
+    room : any,
 }
 
 export const Channel: FC<ChannelProps> = ({ className, collapsed, room }) => (
     <div className={classNames(cls.Channel, { [cls.collapsed]: collapsed }, [className])}>
         <AppLink
             theme={AppLinkTheme.SECONDARY}
-            to={RoutePath.main}
+            to={`/room/${room.id}`}
             className={classNames(cls.link, {}, [className])}
         >
             <div className={cls.channel}>
@@ -29,7 +29,7 @@ export const Channel: FC<ChannelProps> = ({ className, collapsed, room }) => (
                             ? (
                                 <div>
                                     <b>
-                                        {room.lastMessage.author.login}
+                                        {room.lastMessage.author}
                                         :
                                     </b>
                                     {room.lastMessage.message}
